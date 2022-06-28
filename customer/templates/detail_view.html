@@ -1,0 +1,43 @@
+{%extends 'cbase.html'%}
+{%block body_block%}
+    <div
+  class="bg-image card shadow-1-strong"
+  style="background-image: url('https://i.pinimg.com/736x/d5/fa/19/d5fa195e91b17c781311e93dd380826f.jpg');">
+<div class="row mt-5">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <div class="card" style="width: 80%;">
+            {%if book.image%}
+            <img src="{{book.image.url}}" class="card-img-top" alt="...">
+            {%endif%}
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Book Name:{{book.book_name}}</li>
+                <li class="list-group-item">Author:{{book.author}}</li>
+                <li class="list-group-item">Amount:{{book.amount}}</li>
+                <li class="list-group-item">Copies:{{book.copies}}</li>
+            </ul>
+        </div>
+        <a href="{%url 'addtocart' book.id%}" class="btn btn-primary">Add to Cart</a>
+    </div>
+    <div class="col-1"></div>
+</div>
+
+
+{%for review in book.m_reviews%}
+<div class="card mt-2">
+  <div class="card-header">
+    rating:{{review.rating}}
+  </div>
+  <div class="card-body">
+
+    <p class="card-text">{{review.comment}}</p>
+    <p>
+        posted by:{{review.posted_by}}
+    </p>
+  </div>
+</div>
+</div>
+
+
+{%endfor%}
+{%endblock%}

@@ -1,0 +1,42 @@
+{%extends 'base.html'%}
+{%block body_block%}
+<div class="row">
+    <div class="col-6">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                        aria-expanded="true" aria-controls="collapseOne">
+                    New Orders#{{new_orders|length}}
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                 data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <table class="table">
+                        <tr>
+
+                            <th>Product Name</th>
+                            <th>User Name</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                        {%for order in new_orders%}
+                        <tr>
+                            <td>Book Name:{{order.product.book_name}}</td>
+                            <td>Username:{{order.user.username}}</td>
+                            <td>Date:{{order.date}}</td>
+                            <td>
+                                <a href="{%url 'orderdetail' order.id%}" class="btn btn-primary">View</a>
+                                <a href="{%url 'updateorder' order.id%}" class="btn btn-success">Edit</a>
+                            </td>
+                        </tr>
+                        {%endfor%}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{%endblock%}

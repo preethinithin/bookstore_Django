@@ -1,0 +1,44 @@
+{%extends 'base.html'%}
+{%block body_block%}
+<div class="row">
+    <div class="col-6">
+        <div class="card" style="width: 100%;">
+            <div class="row">
+                <div class="col-6">
+                    <img src="{{order.product.image.url}}" class="card-img-top" alt="...">
+                </div>
+                <div class="col-6">
+                    <div class="card-body">
+                <h5 class="card-title">Book Name:{{order.product.book_name}}</h5>
+                <p class="card-text">Author:{{order.product.author}}
+                </p>
+            </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Username{{order.user.username}}</li>
+                <li class="list-group-item">E-Mail:{{order.user.email}}</li>
+                <li class="list-group-item">Address:{{order.address}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-4"></div>
+    <div class="col-4">
+        <form action="" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            {{form.as_p}}
+            <input type="submit">
+        </form>
+    </div>
+    <div class="col-4"></div>
+</div>
+{%endblock%}
